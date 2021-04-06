@@ -1,6 +1,6 @@
 package daos;
 
-public class LowerDAO extends UpperDAO{
+public class LowerDAO<T> extends UpperDAO<T>{
 
 
 
