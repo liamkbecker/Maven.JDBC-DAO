@@ -31,8 +31,12 @@ public abstract class UpperDAO<T>{
         return starters;
     }
 
-    public T update(T dto) {
-        return null;
+    public T update(T dto) throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/JDBCpokemon", "hazel", "fishie711");
+        PreparedStatement s = conn.prepareStatement("SELECT * FROM starters WHERE id=?");
+        s.setInt(1, dto.getId());
+        ResultSet rs = s.executeQuery();
+        return (T) rs;
     }
 
     public T create(T dto) {
